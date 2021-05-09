@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.mapper.AutocarDAO"> 
+    <select id="getAutocarById"  resultType="Autocar">
+        select
+        * from Autocar where `id`=#{id}
+    </select>
+    <delete id="delete">
+		delete from Autocar where id=#{id}
+	</delete>
+    <select id="getAutocarCount" resultType="int">
+        select count(id) from Autocar
+    </select>
+    <select id="getAllAutocar" resultType="Autocar">
+        select * from Autocar
+    </select>
+    <insert id="insert" parameterType="Autocar">
+        insert into
+        Autocar(userid,carno,color,seats,thumb,description,price,created,title) 
+        values(#{userid},#{carno},#{color},#{seats},#{thumb},#{description},#{price},#{created},#{title});
+    </insert>
+        
+    <update id="update" parameterType="Autocar">
+		update Autocar set userid=#{userid},carno=#{carno},color=#{color},seats=#{seats},thumb=#{thumb},description=#{description},price=#{price},created=#{created},title=#{title} where id=#{id}
+	</update>
+        </mapper>
